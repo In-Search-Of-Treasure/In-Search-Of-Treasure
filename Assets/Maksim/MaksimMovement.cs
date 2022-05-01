@@ -4,34 +4,42 @@ using UnityEngine;
 
 public class MaksimMovement : MonoBehaviour
 {
+    [SerializeField]
     public float speed;
 
     private Vector2 direction;
 
     private Animator animator;
 
+    private Rigidbody2D rb;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         direction = Vector2.zero;
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        CharacterInput();
+        //CharacterInput();
         //mover em velocidade constante
-        transform.Translate(speed * Time.deltaTime * direction);
-        if(direction.x != 0 || direction.y != 0)
+
+        //transform.Translate(speed * Time.deltaTime * direction);
+
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;
+
+        if (rb.velocity.x != 0 || rb.velocity.y != 0)
         {
             AnimateCharacter(direction);
         }
         else
         {
             animator.SetLayerWeight(1, 0f);
-        }
-
+        }        
+                
     }
 
     void CharacterInput()
