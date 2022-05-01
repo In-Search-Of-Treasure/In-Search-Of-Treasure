@@ -10,9 +10,13 @@ public class MaksimController : MonoBehaviour
     [SerializeField]
     public float speed;
 
+    private bool restartPlayer;
+    private GameObject inicialPosition;
+
     // Start is called before the first frame update
     void Start()
     {
+        inicialPosition = GameObject.Find("inicialPosition");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         Physics2D.IgnoreCollision(tilemapBg.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -31,6 +35,8 @@ public class MaksimController : MonoBehaviour
         {
             animator.SetLayerWeight(1, 0f);
         }
+
+        Restart();    
     }
 
     void AnimateCharacter(Vector2 dir)
@@ -39,4 +45,17 @@ public class MaksimController : MonoBehaviour
         animator.SetFloat("x", dir.x);
         animator.SetFloat("y", dir.y);
     }
+
+     void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Inimigo")){
+           restartPlayer = true;
+        }
+     }
+
+     void Restart(){
+         if(restartPlayer == true){
+             rb.transform.position = new Vector2(inicialPosition.transform.position.x, inicialPosition.transform.position.y);
+             restartPlayer = false;
+         }
+     }
 }

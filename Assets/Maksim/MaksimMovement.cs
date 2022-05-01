@@ -12,12 +12,15 @@ public class MaksimMovement : MonoBehaviour
     private Animator animator;
 
     private Rigidbody2D rb;
+    private bool restartPlayer;
+    private GameObject inicialPosition;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         direction = Vector2.zero;
         rb = GetComponent<Rigidbody2D>();
+        inicialPosition = GameObject.Find("inicialPosition");
     }
 
 
@@ -39,7 +42,7 @@ public class MaksimMovement : MonoBehaviour
         {
             animator.SetLayerWeight(1, 0f);
         }        
-                
+          Restart();      
     }
 
     void CharacterInput()
@@ -72,5 +75,18 @@ public class MaksimMovement : MonoBehaviour
         animator.SetFloat("x", dir.x);
         animator.SetFloat("y", dir.y);
     }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Inimigo") == true){
+           restartPlayer = true;
+        }
+     }
+
+     void Restart(){
+         if(restartPlayer == true){
+             rb.transform.position = new Vector2(inicialPosition.transform.position.x, inicialPosition.transform.position.y);
+             restartPlayer = false;
+         }
+     }
 
 }
