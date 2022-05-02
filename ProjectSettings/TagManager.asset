@@ -6,6 +6,7 @@ TagManager:
   tags:
   - vira
   - Inimigo
+  - vault
   layers:
   - Default
   - TransparentFX

@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class MaksimController : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator animator;
     public GameObject tilemapBg;
+    
+    public GameObject panel;
+
+    private Button okButton;
 
     [SerializeField]
     public float speed;
 
-    private bool restartPlayer;
     private GameObject inicialPosition;
 
     // Start is called before the first frame update
@@ -20,6 +24,13 @@ public class MaksimController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         Physics2D.IgnoreCollision(tilemapBg.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        
+        panel.SetActive(false);
+
+        okButton = panel.GetComponentInChildren<Button>();
+        okButton.onClick.AddListener(onOkButtonClicked);
+
+        LifeManager.Instance.RestartLifeNumber();
     }
 
     // Update is called once per frame
@@ -36,7 +47,6 @@ public class MaksimController : MonoBehaviour
             animator.SetLayerWeight(1, 0f);
         }
 
-        Restart();    
     }
 
     void AnimateCharacter(Vector2 dir)
@@ -46,16 +56,40 @@ public class MaksimController : MonoBehaviour
         animator.SetFloat("y", dir.y);
     }
 
-     void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Inimigo")){
-           restartPlayer = true;
+     void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.CompareTag("Inimigo")){
+            
+            LifeManager.Instance.DecrementLife();
+
+            Restart();
+
+            if (LifeManager.Instance.GetLifeNumber() < 1)
+            {
+                Pause();
+                Debug.Log("player colidiu com inimigo");
+                panel.SetActive(true);
+            }
         }
      }
 
-     void Restart(){
-         if(restartPlayer == true){
-             rb.transform.position = new Vector2(inicialPosition.transform.position.x, inicialPosition.transform.position.y);
-             restartPlayer = false;
-         }
-     }
+    void Restart() {
+        rb.transform.position = new Vector2(inicialPosition.transform.position.x, inicialPosition.transform.position.y);
+    }
+    private void Pause()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void Resume()
+    {
+        Time.timeScale = 1;
+    }
+
+    private void onOkButtonClicked()
+    {
+        Resume();
+        Restart();
+        panel.SetActive(false);
+        LifeManager.Instance.RestartLifeNumber();
+    }
 }
