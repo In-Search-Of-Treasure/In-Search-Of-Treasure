@@ -8,22 +8,18 @@ public class MaksimController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     public GameObject tilemapBg;
-
     public GameObject panel;
-
     private Button okButton;
 
     [SerializeField]
-    public float speed;
+    public float speed;   
 
-    private GameObject inicialPosition;
-
-    // Start is called before the first frame update
     void Start()
     {
-        inicialPosition = GameObject.Find("inicialPosition");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        // Avoid player collision with camera follow area.
         Physics2D.IgnoreCollision(tilemapBg.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
         panel.SetActive(false);
@@ -71,7 +67,7 @@ public class MaksimController : MonoBehaviour
 
     private void PlayerCollidesWithEnemy(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Inimigo"))
+        if (collision.gameObject.CompareTag(TagsConstants.Player.Enemy))
         {
             LifeManager.Instance.DecrementLife();
 
@@ -80,7 +76,6 @@ public class MaksimController : MonoBehaviour
             if (LifeManager.Instance.GetLifeNumber() < 1)
             {
                 GameManager.Instance.PauseGame();
-                Debug.Log("player colidiu com inimigo");
                 panel.SetActive(true);
             }
         }

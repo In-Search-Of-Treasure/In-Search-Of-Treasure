@@ -22,7 +22,6 @@ public class NPCMarcoController : MonoBehaviour
         anime = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -58,7 +57,7 @@ public class NPCMarcoController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("vira"))
+        if (other.CompareTag(TagsConstants.MarcoNPC.Turn))
         {
             indo = !indo;
         }
