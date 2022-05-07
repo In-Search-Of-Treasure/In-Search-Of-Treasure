@@ -3819,7 +3819,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2059622375}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4345,6 +4345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb389117e3cb8d14188e0ec033e3ec48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartBtn: {fileID: 366046259}
+  ResumeBtn: {fileID: 1871626163}
 --- !u!1 &2137766604
 GameObject:
   m_ObjectHideFlags: 0
