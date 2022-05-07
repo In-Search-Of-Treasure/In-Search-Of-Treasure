@@ -43,6 +43,8 @@ public class MaksimController : MonoBehaviour
         {
             animator.SetLayerWeight(1, 0f);
         }
+
+        PlayerPause();
     }
 
     void AnimateCharacter(Vector2 dir)
@@ -78,6 +80,15 @@ public class MaksimController : MonoBehaviour
                 GameManager.Instance.PauseGame();
                 panel.SetActive(true);
             }
+        }
+    }
+
+    private void PlayerPause()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            GameManager.Instance.PauseGame();
+            SceneGameManager.Instance.LoadMainMenu();
         }
     }
 }

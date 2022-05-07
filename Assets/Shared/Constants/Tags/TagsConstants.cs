@@ -14,4 +14,12 @@
     {
         public const string Player = "Player";
     }
+
+    public static class Screens
+    {
+        public const string Loading = "loadingScreen";
+        public const string MainMenu = "mainMenu";
+        public const string About = "aboutMenu";
+        public const string Options = "optionsMenu";
+    }
 }
