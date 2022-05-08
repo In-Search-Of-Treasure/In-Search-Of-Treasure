@@ -3,7 +3,7 @@ using Assets.Managers.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MaksimController : MonoBehaviour
+public class MaksimController : Subject
 {
     private Rigidbody2D rb;
     private Animator animator;
@@ -21,6 +21,10 @@ public class MaksimController : MonoBehaviour
 
         // Avoid player collision with camera follow area.
         Physics2D.IgnoreCollision(tilemapBg.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        var hudController = FindObjectOfType<HudController>();
+
+        AddObserver(hudController);
 
         panel.SetActive(false);
 
@@ -71,14 +75,17 @@ public class MaksimController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(TagsConstants.Player.Enemy))
         {
-            LifeManager.Instance.DecrementLife();
+            //LifeManager.Instance.DecrementLife();
+            //LifeSubject.LostLifeEvent += DecrementLifeNumber;
+            Notify(null, NotificationType.PlayerLost1Life);
 
+            DecrementLifeNumber();
             PositionManager.Instance.RestartToInitialPosition();
 
             if (LifeManager.Instance.GetLifeNumber() < 1)
             {
-                GameManager.Instance.PauseGame();
-                panel.SetActive(true);
+                GameManager.Instance.PauseGame();                
+                SceneGameManager.Instance.LoadGameOverMenu();                
             }
         }
     }
@@ -91,4 +98,9 @@ public class MaksimController : MonoBehaviour
             SceneGameManager.Instance.LoadMainMenu();
         }
     }
+
+    private void DecrementLifeNumber()
+    {
+        Debug.Log("The player lost 1 life");
+    }   
 }

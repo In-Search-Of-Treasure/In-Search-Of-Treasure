@@ -1,3 +1,4 @@
+using Assets.Managers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,13 @@ public class SceneGameManager : MonoBehaviour
             Instance = this;
     }
 
+    public string GetCurrentSceneName()
+    {
+        var currentScene = SceneManager.GetActiveScene();
+
+        return currentScene.name;
+    }
+
     public void SetScene(int scene)
     {
         SceneManager.LoadScene(scene);
@@ -22,6 +30,14 @@ public class SceneGameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt(PlayerPrefConstants.SceneRelated.SavedScene, currentSceneIndex);
+        SceneManager.LoadScene(SceneConstants.Menu);
+    }
+
+    public void LoadGameOverMenu()
+    {
+        GameManager.Instance.GameOverActive();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt(PlayerPrefConstants.SceneRelated.SavedScene, currentSceneIndex);
         SceneManager.LoadScene(SceneConstants.Menu);
