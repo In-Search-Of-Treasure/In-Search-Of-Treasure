@@ -7,6 +7,10 @@ TagManager:
   - vira
   - Inimigo
   - vault
+  - loadingScreen
+  - mainMenu
+  - aboutMenu
+  - optionsMenu
   layers:
   - Default
   - TransparentFX
