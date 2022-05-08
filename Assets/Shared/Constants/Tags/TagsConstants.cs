@@ -7,7 +7,8 @@
 
     public static class Player
     {
-        public const string Enemy = "Inimigo";        
+        public const string Enemy = "Inimigo";
+        public const string Chest = "vault";
     }
 
     public static class General

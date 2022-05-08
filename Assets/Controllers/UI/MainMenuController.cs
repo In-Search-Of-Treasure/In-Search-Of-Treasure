@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    //TODO: GAMEOVER
     public Button StartBtn;
     public Button ResumeBtn;
     public GameObject MainMenu;
@@ -13,11 +12,13 @@ public class MainMenuController : MonoBehaviour
     public GameObject AboutMenu;
     public GameObject LoadingScreen;
     public GameObject GameOverMenu;
+    public GameObject WinnerMenu;
 
     private void Awake()
     {
         var isGamePaused = GameManager.isGamePaused;
         var isGameOver = GameManager.isGameOver;
+        var isGameWon = GameManager.isGameWon;
 
         if (isGamePaused)
         {
@@ -27,13 +28,12 @@ public class MainMenuController : MonoBehaviour
 
         if (isGameOver)
         {
-            MainMenu.SetActive(false);
-            OptionsMenu.SetActive(false);
-            AboutMenu.SetActive(false);
-            LoadingScreen.SetActive(false);
-            GameOverMenu.SetActive(true);
-            StartBtn.gameObject.SetActive(true);
-            ResumeBtn.gameObject.SetActive(false);
+            ScreenTransition(MenuScreenTransition.GameOver);
+        }
+
+        if (isGameWon)
+        {
+            ScreenTransition(MenuScreenTransition.GameWon);
         }
     }
 
@@ -62,9 +62,31 @@ public class MainMenuController : MonoBehaviour
         GameManager.Instance.GameOverDeactive();
     }
 
+    public void WonGame()
+    {
+        Debug.Log("Player won the game. Congrats!");
+        GameManager.Instance.GameWonActive();
+    }
+
     public void ExitGame()
     {
         Debug.Log("Player quit the game.");
         Application.Quit();
+    }
+
+    private void ScreenTransition(MenuScreenTransition transition)
+    {
+        var gameOverTransition = transition == MenuScreenTransition.GameOver;
+        var gameWonTransition = transition == MenuScreenTransition.GameWon;
+
+        MainMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
+        AboutMenu.SetActive(false);
+        LoadingScreen.SetActive(false);
+        WinnerMenu.SetActive(gameWonTransition);
+        GameOverMenu.SetActive(gameOverTransition);
+
+        StartBtn.gameObject.SetActive(true);
+        ResumeBtn.gameObject.SetActive(false);
     }
 }
