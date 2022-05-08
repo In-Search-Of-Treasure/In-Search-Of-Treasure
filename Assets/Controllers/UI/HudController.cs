@@ -47,7 +47,7 @@ public class HudController : Observer
         LevelName.text = SceneGameManager.Instance.GetCurrentSceneName();
     }
 
-    public override void OnNotify(object value, NotificationType notificationType)
+    public override void OnNotify(NotificationType notificationType, object value = null)
     {
         if(notificationType == NotificationType.PlayerLost1Life)
         {

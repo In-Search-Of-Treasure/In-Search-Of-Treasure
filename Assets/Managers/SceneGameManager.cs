@@ -42,4 +42,12 @@ public class SceneGameManager : MonoBehaviour
         PlayerPrefs.SetInt(PlayerPrefConstants.SceneRelated.SavedScene, currentSceneIndex);
         SceneManager.LoadScene(SceneConstants.Menu);
     }
+
+    public void LoadGameWon()
+    {
+        GameManager.Instance.GameWonActive();
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt(PlayerPrefConstants.SceneRelated.SavedScene, currentSceneIndex);
+        SceneManager.LoadScene(SceneConstants.Menu);
+    }
 }

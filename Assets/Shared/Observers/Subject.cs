@@ -10,11 +10,11 @@ public abstract class Subject : MonoBehaviour
         observers.Add(obs);
     }
 
-    public void Notify(object value, NotificationType notificationType)
+    public void Notify(NotificationType notificationType, object value = null)
     {
         foreach (var obs in observers)
         {
-            obs.OnNotify(value, notificationType);
+            obs.OnNotify(notificationType, value);
         }
     }
 }

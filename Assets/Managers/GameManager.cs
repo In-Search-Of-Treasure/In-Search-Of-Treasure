@@ -8,6 +8,7 @@ namespace Assets.Managers
 
         public static bool isGamePaused;
         public static bool isGameOver;
+        public static bool isGameWon;
 
         private void Awake()
         {
@@ -37,6 +38,16 @@ namespace Assets.Managers
         public void GameOverDeactive()
         {
             isGameOver = false;
+        }
+
+        public void GameWonActive()
+        {
+            isGameWon = true;
+        }
+
+        public void GameWonDeactive()
+        {
+            isGameWon = false;
         }
     }
 }
