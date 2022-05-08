@@ -6,6 +6,10 @@ namespace Assets.Managers
     {
         public static GameManager Instance { get; private set; }
 
+        public static bool isGamePaused;
+        public static bool isGameOver;
+        public static bool isGameWon;
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -16,12 +20,34 @@ namespace Assets.Managers
 
         public void PauseGame()
         {
+            isGamePaused = true;
             Time.timeScale = 0;
         }
 
         public void ResumeGame()
         {
+            isGamePaused = false;
             Time.timeScale = 1;
+        }
+
+        public void GameOverActive()
+        {
+            isGameOver = true;
+        }
+
+        public void GameOverDeactive()
+        {
+            isGameOver = false;
+        }
+
+        public void GameWonActive()
+        {
+            isGameWon = true;
+        }
+
+        public void GameWonDeactive()
+        {
+            isGameWon = false;
         }
     }
 }

@@ -6,7 +6,6 @@ public class LifeManager : MonoBehaviour
     private const string LIFE_KEY = "Life";
 
     public static LifeManager Instance { get; private set; }
-    public Text LifeUI;
 
     private void Awake()
     {
@@ -14,15 +13,12 @@ public class LifeManager : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
-
-        UpdateLifeNumber();
     }
 
     public void DecrementLife()
     {
         var newLifeNumber = GetLifeNumber() - 1;
         PlayerPrefs.SetInt(LIFE_KEY, newLifeNumber);
-        UpdateLifeNumber();
     }
 
     public int GetLifeNumber()
@@ -34,12 +30,6 @@ public class LifeManager : MonoBehaviour
 
     public void RestartLifeNumber()
     {
-        PlayerPrefs.SetInt(LIFE_KEY, 5);
-        UpdateLifeNumber();
-    }
-
-    private void UpdateLifeNumber()
-    {
-        LifeUI.text = $" {GetLifeNumber()}";
+        PlayerPrefs.SetInt(LIFE_KEY, 5);        
     }
 }
