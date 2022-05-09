@@ -57,8 +57,7 @@ public class MainMenuController : MonoBehaviour
 
     public void PlayGame()
     {        
-        //if (alreadySawCutscene)
-        if(true)
+        if (alreadySawCutscene)
         {
             Debug.Log("Player started the game.");
             GameManager.Instance.ResumeGame();
