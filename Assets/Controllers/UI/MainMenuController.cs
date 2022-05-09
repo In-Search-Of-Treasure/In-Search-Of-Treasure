@@ -41,7 +41,8 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Player started the game.");
         GameManager.Instance.ResumeGame();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Fase-01");
     }
 
     public void ResumeGame()
