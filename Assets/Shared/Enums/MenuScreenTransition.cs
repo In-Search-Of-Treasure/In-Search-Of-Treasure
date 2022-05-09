@@ -2,5 +2,6 @@
 public enum MenuScreenTransition
 {
     GameOver,
-    GameWon
+    GameWon,
+    PausedGame,
 }

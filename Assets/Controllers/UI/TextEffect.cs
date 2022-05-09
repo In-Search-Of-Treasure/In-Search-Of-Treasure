@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class TextEffect : MonoBehaviour
+public class TextEffect : Subject
 {
     public Text text;
     public bool playOnAwake = true;
@@ -21,60 +21,72 @@ public class TextEffect : MonoBehaviour
     private AudioSource TyppingFX;
 
     void Awake()
-{
-    TyppingFX = AudioTypping.GetComponent<AudioSource>();
-    TyppingFX.clip = AudioTypping.GetComponent<AudioSource>().clip;
-
-    text = GetComponent<Text>();
-    originDelayBetweenChars = delayBetweenChars;
-
-    charComma = Convert.ToChar(44);
-    charPeriod = Convert.ToChar(46);
-    charEmpty = Convert.ToChar(" ");//Convert.ToChar(255);
-
-    if (playOnAwake)
     {
-        ChangeText(text.text, delayToStart);
+        TyppingFX = AudioTypping.GetComponent<AudioSource>();
+        TyppingFX.clip = AudioTypping.GetComponent<AudioSource>().clip;
+        
+        var cutsceneController = FindObjectOfType<CutsceneController>();
+        AddObserver(cutsceneController);
+
+        text = GetComponent<Text>();
+        originDelayBetweenChars = delayBetweenChars;
+        charComma = Convert.ToChar(44);
+        charPeriod = Convert.ToChar(46);
+        charEmpty = Convert.ToChar(" ");//Convert.ToChar(255);
+
+        if (playOnAwake)
+        {
+            ChangeText(text.text, delayToStart);
+        }
     }
-}
 
-//Update text and start typewriter effect
-public void ChangeText(string textContent, float delayBetweenChars = 0f)
-{
-    StopCoroutine(PlayText()); //stop Coroutime if exist
-    story = textContent;
-    text.text = ""; //clean text
-    Invoke("Start_PlayText", delayBetweenChars); //Invoke effect
-}
-
-void Start_PlayText()
-{
-    StartCoroutine(PlayText());
-}
-
-IEnumerator PlayText()
-{
-
-    foreach (char c in story)
+    //Update text and start typewriter effect
+    public void ChangeText(string textContent, float delayBetweenChars = 0f)
     {
-        delayBetweenChars = originDelayBetweenChars;
+        StopCoroutine(PlayText()); //stop Coroutime if exist
+        story = textContent;
+        text.text = ""; //clean text
+        Invoke("Start_PlayText", delayBetweenChars); //Invoke effect
+    }
 
-        if (lastCharPunctuation)  //If previous character was a comma/period, pause typing
+    void Start_PlayText()
+    {
+        StartCoroutine(PlayText(ReleaseTextWritter));
+    }
+
+    IEnumerator PlayText(Action callBack = null)
+    {
+        foreach (char c in story)
         {
-            TyppingFX.Pause();
-            yield return new WaitForSeconds(delayBetweenChars = delayAfterPunctuation);
-            lastCharPunctuation = false;
+            delayBetweenChars = originDelayBetweenChars;
+
+            if (lastCharPunctuation)  //If previous character was a comma/period, pause typing
+            {
+                TyppingFX.Pause();
+                yield return new WaitForSeconds(delayBetweenChars = delayAfterPunctuation);
+                lastCharPunctuation = false;
+            }
+
+            if ( c == charEmpty /*|| c == charComma || c == charPeriod */ )
+            {
+              TyppingFX.Pause();
+              lastCharPunctuation = true;
+            }
+
+            TyppingFX.PlayOneShot(TyppingFX.clip,0.002f);
+            text.text += c;
+            yield return new WaitForSeconds(delayBetweenChars);                                    
         }
 
-        if ( c == charEmpty /*|| c == charComma || c == charPeriod */ )
+        if (callBack != null)
         {
-          TyppingFX.Pause();
-          lastCharPunctuation = true;
+            callBack();
         }
+    }
 
-        TyppingFX.PlayOneShot(TyppingFX.clip,0.002f);
-        text.text += c;
-        yield return new WaitForSeconds(delayBetweenChars);
-        }
+    private void ReleaseTextWritter()
+    {
+        TyppingFX.Stop();
+        Notify(NotificationType.CutsceneStopped);
     }
 }

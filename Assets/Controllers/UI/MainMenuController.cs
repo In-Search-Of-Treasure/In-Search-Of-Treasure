@@ -14,11 +14,13 @@ public class MainMenuController : MonoBehaviour
     public GameObject GameOverMenu;
     public GameObject WinnerMenu;
 
+    private bool alreadySawCutscene => GameManager.playerAlredySawCutscene;
+
     private void Awake()
     {
         var isGamePaused = GameManager.isGamePaused;
         var isGameOver = GameManager.isGameOver;
-        var isGameWon = GameManager.isGameWon;
+        var isGameWon = GameManager.isGameWon;        
 
         if (isGamePaused)
         {
@@ -28,20 +30,47 @@ public class MainMenuController : MonoBehaviour
 
         if (isGameOver)
         {
-            ScreenTransition(MenuScreenTransition.GameOver);
+            MainMenu.SetActive(false);
+            OptionsMenu.SetActive(false);
+            AboutMenu.SetActive(false);
+            LoadingScreen.SetActive(false);
+            WinnerMenu.SetActive(false);
+            GameOverMenu.SetActive(true);
+
+            StartBtn.gameObject.SetActive(true);
+            ResumeBtn.gameObject.SetActive(false);
         }
 
         if (isGameWon)
         {
-            ScreenTransition(MenuScreenTransition.GameWon);
+            MainMenu.SetActive(false);
+            OptionsMenu.SetActive(false);
+            AboutMenu.SetActive(false);
+            LoadingScreen.SetActive(false);
+            WinnerMenu.SetActive(true);
+            GameOverMenu.SetActive(false);
+
+            StartBtn.gameObject.SetActive(true);
+            ResumeBtn.gameObject.SetActive(false);
         }
     }
 
     public void PlayGame()
-    {
-        Debug.Log("Player started the game.");
-        GameManager.Instance.ResumeGame();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    {        
+        //if (alreadySawCutscene)
+        if(true)
+        {
+            Debug.Log("Player started the game.");
+            GameManager.Instance.ResumeGame();
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
+        }
+        else
+        {
+            Debug.Log("Player started cutscene.");
+            GameManager.Instance.ResumeGame();
+            SceneGameManager.Instance.SetScene(SceneManager.GetActiveScene().buildIndex + 1);
+            GameManager.Instance.AlreadySawCutscene();
+        }
     }
 
     public void ResumeGame()
@@ -78,15 +107,23 @@ public class MainMenuController : MonoBehaviour
     {
         var gameOverTransition = transition == MenuScreenTransition.GameOver;
         var gameWonTransition = transition == MenuScreenTransition.GameWon;
+        var gamePausedTransition = transition == MenuScreenTransition.PausedGame;
 
-        MainMenu.SetActive(false);
+        MainMenu.SetActive(gamePausedTransition);
         OptionsMenu.SetActive(false);
         AboutMenu.SetActive(false);
         LoadingScreen.SetActive(false);
         WinnerMenu.SetActive(gameWonTransition);
         GameOverMenu.SetActive(gameOverTransition);
 
-        StartBtn.gameObject.SetActive(true);
-        ResumeBtn.gameObject.SetActive(false);
+        StartBtn.gameObject.SetActive(!gamePausedTransition);
+        ResumeBtn.gameObject.SetActive(gamePausedTransition);
+
+        switch (transition)
+        {
+            case MenuScreenTransition.GameWon:
+                GameManager.Instance.GameWonDeactive();
+                break;            
+        }
     }
 }
