@@ -9,6 +9,7 @@ namespace Assets.Managers
         public static bool isGamePaused;
         public static bool isGameOver;
         public static bool isGameWon;
+        public static bool playerAlredySawCutscene;
 
         private void Awake()
         {
@@ -48,6 +49,11 @@ namespace Assets.Managers
         public void GameWonDeactive()
         {
             isGameWon = false;
+        }
+
+        public void AlreadySawCutscene()
+        {
+            playerAlredySawCutscene = true;
         }
     }
 }

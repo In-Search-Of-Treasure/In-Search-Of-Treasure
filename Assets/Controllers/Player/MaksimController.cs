@@ -85,6 +85,7 @@ public class MaksimController : Subject
         if (Input.GetKey(KeyCode.Escape))
         {
             GameManager.Instance.PauseGame();
+            GameManager.Instance.GameWonDeactive();
             SceneGameManager.Instance.LoadMainMenu();
         }
     }
