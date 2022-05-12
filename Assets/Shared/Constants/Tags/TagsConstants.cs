@@ -2,7 +2,7 @@
 {
     public static class MarcoNPC
     {
-        public const string Turn = "vira";
+        public const string Turn = "Wall";
     }
 
     public static class Player

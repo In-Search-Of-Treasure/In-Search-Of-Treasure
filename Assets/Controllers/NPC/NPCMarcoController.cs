@@ -14,12 +14,17 @@ public class NPCMarcoController : MonoBehaviour
     public float moveSpeedBase = 2;
     public bool isVertical;
 
+    public GameObject tilemapBg;
+
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         anime = GetComponent<Animator>();
+
+        // Avoid npc collision with camera follow area.
+        Physics2D.IgnoreCollision(tilemapBg.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     void Update()
@@ -55,9 +60,9 @@ public class NPCMarcoController : MonoBehaviour
             rigid.velocity = transform.TransformDirection(Vector2.right * moveSpeed);
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.CompareTag(TagsConstants.MarcoNPC.Turn))
+        if (collision.gameObject.CompareTag(TagsConstants.MarcoNPC.Turn))
         {
             indo = !indo;
         }
