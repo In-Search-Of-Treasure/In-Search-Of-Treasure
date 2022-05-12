@@ -118,6 +118,20 @@ MonoBehaviour:
       m_Height: 39
     m_Scale: 1
     m_AtlasIndex: 0
+  - m_Index: 13
+    m_Metrics:
+      m_Width: 14.3125
+      m_Height: 23.671875
+      m_HorizontalBearingX: 2.875
+      m_HorizontalBearingY: 4.5
+      m_HorizontalAdvance: 22.046875
+    m_GlyphRect:
+      m_X: 998
+      m_Y: 152
+      m_Width: 16
+      m_Height: 25
+    m_Scale: 1
+    m_AtlasIndex: 0
   - m_Index: 14
     m_Metrics:
       m_Width: 28.703125
@@ -622,6 +636,20 @@ MonoBehaviour:
       m_Height: 61
     m_Scale: 1
     m_AtlasIndex: 0
+  - m_Index: 75
+    m_Metrics:
+      m_Width: 26.375
+      m_Height: 72.71875
+      m_HorizontalBearingX: -8.1875
+      m_HorizontalBearingY: 52.46875
+      m_HorizontalAdvance: 23.84375
+    m_GlyphRect:
+      m_X: 869
+      m_Y: 261
+      m_Width: 28
+      m_Height: 74
+    m_Scale: 1
+    m_AtlasIndex: 0
   - m_Index: 76
     m_Metrics:
       m_Width: 42.84375
@@ -832,6 +860,20 @@ MonoBehaviour:
       m_Height: 70
     m_Scale: 1
     m_AtlasIndex: 0
+  - m_Index: 91
+    m_Metrics:
+      m_Width: 34.734375
+      m_Height: 41.296875
+      m_HorizontalBearingX: 1.078125
+      m_HorizontalBearingY: 36.984375
+      m_HorizontalAdvance: 37.53125
+    m_GlyphRect:
+      m_X: 557
+      m_Y: 153
+      m_Width: 35
+      m_Height: 42
+    m_Scale: 1
+    m_AtlasIndex: 0
   - m_Index: 106
     m_Metrics:
       m_Width: 66.234375
@@ -900,6 +942,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 42
     m_GlyphIndex: 11
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 44
+    m_GlyphIndex: 13
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 45
@@ -1046,6 +1092,10 @@ MonoBehaviour:
     m_GlyphIndex: 74
     m_Scale: 1
   - m_ElementType: 1
+    m_Unicode: 106
+    m_GlyphIndex: 75
+    m_Scale: 1
+  - m_ElementType: 1
     m_Unicode: 107
     m_GlyphIndex: 76
     m_Scale: 1
@@ -1104,6 +1154,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 121
     m_GlyphIndex: 90
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 122
+    m_GlyphIndex: 91
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 8230
