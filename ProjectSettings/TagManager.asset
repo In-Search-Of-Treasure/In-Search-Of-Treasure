@@ -12,6 +12,7 @@ TagManager:
   - aboutMenu
   - optionsMenu
   - Wall
+  - Trap
   layers:
   - Default
   - TransparentFX
