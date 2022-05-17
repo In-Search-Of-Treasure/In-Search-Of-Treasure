@@ -20,7 +20,9 @@ public class MaksimController : Subject
         Physics2D.IgnoreCollision(tilemapBg.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
         var hudController = FindObjectOfType<HudController>();
+        var keyController = FindObjectOfType<KeyController>();
         AddObserver(hudController);
+        AddObserver(keyController);
 
         LifeManager.Instance.RestartLifeNumber();
     }
@@ -84,9 +86,7 @@ public class MaksimController : Subject
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            GameManager.Instance.PauseGame();
-            GameManager.Instance.GameWonDeactive();
-            SceneGameManager.Instance.LoadMainMenu();
+            Notify(NotificationType.PlayerPressedEsc);
         }
     }
 
