@@ -11,6 +11,8 @@ public class MaksimController : Subject
     [SerializeField]
     public float speed;
 
+    private const string TRAP_DAMAGE_ANIMATION = "Spike_Trap_Middle";
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,7 +61,7 @@ public class MaksimController : Subject
     {
         if (collision.gameObject.CompareTag(TagsConstants.Player.Trap))
         {
-            if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Spike_Trap_Middle"))
+            if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(TRAP_DAMAGE_ANIMATION))
             {
                 PlayerDecrementLife();
             }
