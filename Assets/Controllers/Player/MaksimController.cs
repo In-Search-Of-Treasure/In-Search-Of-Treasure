@@ -11,6 +11,8 @@ public class MaksimController : Subject
     [SerializeField]
     public float speed;
 
+    private const string TRAP_DAMAGE_ANIMATION = "Spike_Trap_Middle";
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -55,19 +57,35 @@ public class MaksimController : Subject
         PlayerCollidesWithChest(collision);
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(TagsConstants.Player.Trap))
+        {
+            if (collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName(TRAP_DAMAGE_ANIMATION))
+            {
+                PlayerDecrementLife();
+            }
+        }
+    }
+
+    private void PlayerDecrementLife()
+    {
+        Notify(NotificationType.PlayerLost1Life);
+        DecrementLifeNumber();
+        PositionManager.Instance.RestartToInitialPosition();
+
+        if (LifeManager.Instance.GetLifeNumber() < 1)
+        {
+            GameManager.Instance.PauseGame();
+            SceneGameManager.Instance.LoadGameOverMenu();
+        }
+    }
+
     private void PlayerCollidesWithEnemy(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(TagsConstants.Player.Enemy))
         {
-            Notify(NotificationType.PlayerLost1Life);
-            DecrementLifeNumber();
-            PositionManager.Instance.RestartToInitialPosition();
-
-            if (LifeManager.Instance.GetLifeNumber() < 1)
-            {
-                GameManager.Instance.PauseGame();
-                SceneGameManager.Instance.LoadGameOverMenu();
-            }
+            PlayerDecrementLife();
         }
     }
 

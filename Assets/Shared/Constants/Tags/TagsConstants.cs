@@ -9,6 +9,7 @@
     {
         public const string Enemy = "Inimigo";
         public const string Chest = "vault";
+        public const string Trap = "Trap";
     }
 
     public static class General
