@@ -264,7 +264,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: -2305204071527019509, guid: 7810966f0f690954c87305933cabf2b0,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3972499, g: 0.43544862, b: 0.745283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -37011,6 +37011,11 @@ PrefabInstance:
       propertyPath: tilemapBg
       value: 
       objectReference: {fileID: 60832196}
+    - target: {fileID: 279320763219826104, guid: 0cf63f7e7820336429ab164da6f5e6c6,
+        type: 3}
+      propertyPath: moveSpeedBase
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 279320763219826105, guid: 0cf63f7e7820336429ab164da6f5e6c6,
         type: 3}
       propertyPath: m_Simulated
@@ -37608,6 +37613,11 @@ PrefabInstance:
       propertyPath: isVertical
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 279320763219826104, guid: 0cf63f7e7820336429ab164da6f5e6c6,
+        type: 3}
+      propertyPath: moveSpeedBase
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 279320763219826105, guid: 0cf63f7e7820336429ab164da6f5e6c6,
         type: 3}
       propertyPath: m_Simulated
@@ -37696,6 +37706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isVertical
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 279320763219826104, guid: 0cf63f7e7820336429ab164da6f5e6c6,
+        type: 3}
+      propertyPath: moveSpeedBase
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 279320763219826105, guid: 0cf63f7e7820336429ab164da6f5e6c6,
         type: 3}
@@ -38261,6 +38276,11 @@ PrefabInstance:
       propertyPath: isVertical
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 279320763219826104, guid: 0cf63f7e7820336429ab164da6f5e6c6,
+        type: 3}
+      propertyPath: moveSpeedBase
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 279320763219826105, guid: 0cf63f7e7820336429ab164da6f5e6c6,
         type: 3}
       propertyPath: m_Simulated
@@ -38349,6 +38369,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isVertical
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 279320763219826104, guid: 0cf63f7e7820336429ab164da6f5e6c6,
+        type: 3}
+      propertyPath: moveSpeedBase
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 279320763219826105, guid: 0cf63f7e7820336429ab164da6f5e6c6,
         type: 3}
