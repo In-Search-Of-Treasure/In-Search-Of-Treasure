@@ -1,7 +1,7 @@
 using Assets.Managers;
 using UnityEngine;
 
-public class VictoryController : MonoBehaviour
+public class VictoryController : Subject
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
