@@ -12,6 +12,9 @@ TagManager:
   - aboutMenu
   - optionsMenu
   - Wall
+  - Fruit1
+  - Fruit2
+  - Fruit3
   layers:
   - Default
   - TransparentFX

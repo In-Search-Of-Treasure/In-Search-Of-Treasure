@@ -1,19 +1,64 @@
 ﻿using Assets.Managers;
+using UnityEngine;
 
 public class KeyController : Observer
 {
+    private bool InventoryIsOpen;
+
     public override void OnNotify(NotificationType notificationType, object value = null)
     {
-        if(notificationType == NotificationType.PlayerPressedEsc)
+        if (notificationType == NotificationType.PlayerPressedEsc)
         {
-            GameManager.Instance.PauseGame();
-            GameManager.Instance.GameWonDeactive();
-            SceneGameManager.Instance.LoadMainMenu();
+            EscPressed();
         }
 
-        if(notificationType == NotificationType.CutsceneSkipped)
+        if (notificationType == NotificationType.CutsceneSkipped)
         {
-            SceneGameManager.Instance.SetScene(SceneConstants.Demo);
+            CutsceneSkipped();
         }
+
+        if (notificationType == NotificationType.PlayerOpenOrCloseInventory)
+        {
+            InventoryPressed(value);
+        }
+    }
+
+    private void InventoryPressed(object value)
+    {
+        GameObject inventory;
+
+        if (value != null)
+        {
+            inventory = (GameObject)value;
+
+            OpenCloseInventory(inventory);
+        }
+    }
+
+    private void EscPressed()
+    {
+        GameManager.Instance.PauseGame();
+        GameManager.Instance.GameWonDeactive();
+        SceneGameManager.Instance.LoadMainMenu();
+    }
+
+    private void CutsceneSkipped()
+    {
+        SceneGameManager.Instance.SetScene(SceneConstants.Demo);
+    }
+
+    private void OpenInventory(GameObject inventory)
+    {
+        inventory.SetActive(true);
+    }
+
+    private void CloseInventory(GameObject inventory)
+    {
+        inventory.SetActive(false);
+    }
+
+    private void OpenCloseInventory(GameObject inventory)
+    {
+        inventory.SetActive(!inventory.activeSelf);
     }
 }

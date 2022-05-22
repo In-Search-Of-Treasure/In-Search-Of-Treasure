@@ -2,6 +2,7 @@
 {
     PlayerLost1Life,
     PlayerPressedEsc,
+    PlayerOpenOrCloseInventory,
     CutsceneSkipped,
     CutsceneStopped,
 }
