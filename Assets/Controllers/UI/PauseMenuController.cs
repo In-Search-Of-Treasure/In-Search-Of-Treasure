@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenuController : MonoBehaviour
@@ -8,13 +9,15 @@ public class PauseMenuController : MonoBehaviour
 
     public CanvasGroup pauseCanvasGroup;
     bool isPaused = false;
+    private const string MENU = "Menu";
 
     void Start()
     {
         pauseCanvasGroup.alpha = 0;
+        isPaused = false;
+        Time.timeScale = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,5 +45,17 @@ public class PauseMenuController : MonoBehaviour
             isPaused = !isPaused;
             Time.timeScale = 1;
         }
+    }
+
+    public void ReloadCurrentScene()
+    {
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Player quit the game.");
+        Application.Quit();
     }
 }
