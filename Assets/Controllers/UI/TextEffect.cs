@@ -26,7 +26,9 @@ public class TextEffect : Subject
         TyppingFX.clip = AudioTypping.GetComponent<AudioSource>().clip;
         
         var cutsceneController = FindObjectOfType<CutsceneController>();
+        var keyController = FindObjectOfType<KeyController>();
         AddObserver(cutsceneController);
+        AddObserver(keyController);
 
         text = GetComponent<Text>();
         originDelayBetweenChars = delayBetweenChars;
@@ -40,8 +42,13 @@ public class TextEffect : Subject
         }
     }
 
+    private void Update()
+    {
+        SkipCutscene();
+    }
+
     //Update text and start typewriter effect
-    public void ChangeText(string textContent, float delayBetweenChars = 0f)
+    private void ChangeText(string textContent, float delayBetweenChars = 0f)
     {
         StopCoroutine(PlayText()); //stop Coroutime if exist
         story = textContent;
@@ -49,12 +56,12 @@ public class TextEffect : Subject
         Invoke("Start_PlayText", delayBetweenChars); //Invoke effect
     }
 
-    void Start_PlayText()
+    private void Start_PlayText()
     {
         StartCoroutine(PlayText(ReleaseTextWritter));
     }
 
-    IEnumerator PlayText(Action callBack = null)
+    private IEnumerator PlayText(Action callBack = null)
     {
         foreach (char c in story)
         {
@@ -88,5 +95,13 @@ public class TextEffect : Subject
     {
         TyppingFX.Stop();
         Notify(NotificationType.CutsceneStopped);
+    }
+
+    private void SkipCutscene() 
+    {
+        if (Input.anyKey)
+        {
+            Notify(NotificationType.CutsceneSkipped);
+        }
     }
 }
