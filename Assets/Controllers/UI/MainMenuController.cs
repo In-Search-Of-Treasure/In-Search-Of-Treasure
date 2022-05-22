@@ -12,23 +12,15 @@ public class MainMenuController : MonoBehaviour
     public GameObject AboutMenu;
     public GameObject LoadingScreen;
     public GameObject GameOverMenu;
-    public GameObject WinnerMenu;
+    public GameObject WinnerMenu;    
 
-    private bool alreadySawCutscene => GameManager.playerAlredySawCutscene;
-
-    private void Awake()
+    private void Start()
     {
         var isGamePaused = GameManager.isGamePaused;
         var isGameOver = GameManager.isGameOver;
-        var isGameWon = GameManager.isGameWon;        
+        var isGameWon = GameManager.isGameWon;
 
-        if (isGamePaused)
-        {
-            StartBtn.gameObject.SetActive(false);
-            ResumeBtn.gameObject.SetActive(true);
-        }
-
-        if (isGameOver)
+        if (isGameOver && isGamePaused)
         {
             MainMenu.SetActive(false);
             OptionsMenu.SetActive(false);
@@ -39,9 +31,9 @@ public class MainMenuController : MonoBehaviour
 
             StartBtn.gameObject.SetActive(true);
             ResumeBtn.gameObject.SetActive(false);
+            GameManager.Instance.GameOverDeactive();
         }
-
-        if (isGameWon)
+        else if (isGameWon && isGamePaused)
         {
             MainMenu.SetActive(false);
             OptionsMenu.SetActive(false);
@@ -52,24 +44,20 @@ public class MainMenuController : MonoBehaviour
 
             StartBtn.gameObject.SetActive(true);
             ResumeBtn.gameObject.SetActive(false);
+            GameManager.Instance.GameWonDeactive();
+        }
+        else if (isGamePaused)
+        {
+            StartBtn.gameObject.SetActive(false);
+            ResumeBtn.gameObject.SetActive(true);
         }
     }
 
     public void PlayGame()
-    {        
-        if (alreadySawCutscene)
-        {
-            Debug.Log("Player started the game.");
-            GameManager.Instance.ResumeGame();
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
-        }
-        else
-        {
-            Debug.Log("Player started cutscene.");
-            GameManager.Instance.ResumeGame();
-            SceneGameManager.Instance.SetScene(SceneManager.GetActiveScene().buildIndex + 1);
-            GameManager.Instance.AlreadySawCutscene();
-        }
+    {                
+        Debug.Log("Player started cutscene.");
+        GameManager.Instance.ResumeGame();
+        SceneGameManager.Instance.SetScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ResumeGame()
