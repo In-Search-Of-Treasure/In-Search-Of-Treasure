@@ -12,7 +12,6 @@ public class PauseMenuController : MonoBehaviour
 
     public CanvasGroup pauseCanvasGroup;
     bool isPaused = false;
-    private const string MENU = "Menu";
 
     void Start()
     {
@@ -73,6 +72,6 @@ public class PauseMenuController : MonoBehaviour
     public void ExitGame()
     {
         Debug.Log("Player quit the game.");
-        Application.Quit();
+        SceneManager.LoadScene(SceneConstants.Menu);
     }
 }
