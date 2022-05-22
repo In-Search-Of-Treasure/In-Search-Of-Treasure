@@ -129,10 +129,12 @@ public class MaksimController : Subject
 
     private void PlayerPause()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        /*if (Input.GetKey(KeyCode.Escape))
         {
-            Notify(NotificationType.PlayerPressedEsc);
-        }
+            GameManager.Instance.PauseGame();
+            GameManager.Instance.GameWonDeactive();
+            SceneGameManager.Instance.LoadMainMenu();
+        }*/
     }
 
     private void PlayerOpenCloseInventory()
