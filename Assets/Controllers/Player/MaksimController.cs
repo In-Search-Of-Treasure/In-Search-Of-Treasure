@@ -27,12 +27,14 @@ public class MaksimController : Subject
         AddObserver(hudController);
         AddObserver(keyController);
 
-        LifeManager.Instance.RestartLifeNumber();
+        LifeManager.Instance.RestartLifeNumber();               
     }
 
     // Update is called once per frame
     void Update()
     {
+        speed = GetPlayerSpeed();
+
         rb.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * speed * Time.deltaTime;
 
         if (rb.velocity.x != 0 || rb.velocity.y != 0)
@@ -45,7 +47,7 @@ public class MaksimController : Subject
         }
 
         PlayerPause();
-        PlayerOpenCloseInventory();
+        PlayerOpenCloseInventory();        
     }
 
     void AnimateCharacter(Vector2 dir)
@@ -142,5 +144,11 @@ public class MaksimController : Subject
         inventoryIsFullMessage.SetActive(true);        
         yield return new WaitForSeconds(3);
         inventoryIsFullMessage.SetActive(false);
+    }
+
+    private float GetPlayerSpeed()
+    {
+        var speed = PlayerPrefs.GetFloat(PlayerPrefConstants.SkillsRelated.PlayerSpeed, 700);
+        return speed;
     }
 }

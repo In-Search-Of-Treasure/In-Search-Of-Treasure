@@ -230,6 +230,12 @@ public class InventoryController : MonoBehaviour
         //To use an item, we need to access the list on the manager like:
         // InventoryManager.Instance.GetSlots()[usebutton-1]
 
+        var inventorySlots = InventoryManager.Instance.GetSlots();
+
+        var fruit = inventorySlots[useButton-1];
+
+        InventoryManager.Instance.UseFruit(fruit);
+
         Debug.Log($"Player is using Slot {useButton}");
         RemoveItem(useButton);        
     }

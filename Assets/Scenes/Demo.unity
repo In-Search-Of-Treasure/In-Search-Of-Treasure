@@ -438,7 +438,7 @@ MonoBehaviour:
   tilemapBg: {fileID: 955525324}
   inventoryIsFullMessage: {fileID: 4320803462392979491}
   inventory: {fileID: 3515399069940531547}
-  speed: 700
+  speed: 0
 --- !u!114 &358045312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17493,7 +17493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.97558594, y: 0.58673096}
+  m_AnchoredPosition: {x: -0.97558594, y: 0.586792}
   m_SizeDelta: {x: -43.803, y: -17.948}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3170249482963118549
@@ -17964,7 +17964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.72229, y: 0}
+  m_AnchoredPosition: {x: 7.722168, y: 0}
   m_SizeDelta: {x: -46.816986, y: -16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &4078184913613287261
@@ -18442,7 +18442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.9000244, y: -43.700012}
+  m_AnchoredPosition: {x: -6.9001465, y: -43.69995}
   m_SizeDelta: {x: -138.2729, y: -171.7286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8983598084677464581

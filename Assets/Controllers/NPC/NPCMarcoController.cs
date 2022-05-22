@@ -11,7 +11,7 @@ public class NPCMarcoController : MonoBehaviour
     private float moveSpeed;
 
     [SerializeField]
-    public float moveSpeedBase = 2;
+    public float moveSpeedBase;
     public bool isVertical;
 
     public GameObject tilemapBg;
@@ -29,6 +29,7 @@ public class NPCMarcoController : MonoBehaviour
 
     void Update()
     {
+        moveSpeedBase = GetEnemySpeed();
 
         if (isVertical)
         {
@@ -66,5 +67,11 @@ public class NPCMarcoController : MonoBehaviour
         {
             indo = !indo;
         }
+    }
+
+    private float GetEnemySpeed()
+    {
+        var speed = PlayerPrefs.GetFloat(PlayerPrefConstants.SkillsRelated.EnemySpeed, PlayerPrefConstants.SkillsRelated.EnemyDefaultSpeedValue);
+        return speed;
     }
 }
