@@ -25,6 +25,7 @@ public class NPCMarcoController : MonoBehaviour
 
         // Avoid npc collision with camera follow area.
         Physics2D.IgnoreCollision(tilemapBg.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        ResetEnemySpeed();
     }
 
     void Update()
@@ -73,5 +74,10 @@ public class NPCMarcoController : MonoBehaviour
     {
         var speed = PlayerPrefs.GetFloat(PlayerPrefConstants.SkillsRelated.EnemySpeed, PlayerPrefConstants.SkillsRelated.EnemyDefaultSpeedValue);
         return speed;
+    }
+
+    private void ResetEnemySpeed()
+    {
+        PlayerPrefs.SetFloat(PlayerPrefConstants.SkillsRelated.EnemySpeed, PlayerPrefConstants.SkillsRelated.EnemyDefaultSpeedValue);
     }
 }
