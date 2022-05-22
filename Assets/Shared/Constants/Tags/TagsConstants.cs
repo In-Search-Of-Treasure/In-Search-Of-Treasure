@@ -24,4 +24,11 @@
         public const string About = "aboutMenu";
         public const string Options = "optionsMenu";
     }
+
+    public static class Fruits
+    {
+        public const string Fruit1 = "Fruit1";
+        public const string Fruit2 = "Fruit2";
+        public const string Fruit3 = "Fruit3";
+    }
 }
