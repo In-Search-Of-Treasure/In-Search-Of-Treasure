@@ -8,18 +8,13 @@ public class PauseMenuController : Observer
 {
     public GameObject pauseMenu;
 
+    private bool isPaused;
+
     void Start()
     {
-        pauseMenu.SetActive(false);
+        isPaused = false;
+        pauseMenu.SetActive(isPaused);
         Time.timeScale = 1;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
     }
 
     public void Pause()
@@ -29,14 +24,16 @@ public class PauseMenuController : Observer
             return;
         }
 
-        if (pauseMenu.active)
+        if (isPaused)
         {
-            pauseMenu.SetActive(!pauseMenu.active);
+            isPaused = !isPaused;
+            pauseMenu.SetActive(isPaused);
             Time.timeScale = 1;
         }
         else
         {
-            pauseMenu.SetActive(!pauseMenu.active);
+            isPaused = !isPaused;
+            pauseMenu.SetActive(isPaused);
             Time.timeScale = 0;
         }
     }
