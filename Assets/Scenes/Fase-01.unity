@@ -369,6 +369,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1429444683}
     m_Modifications:
+    - target: {fileID: 7768869703630192912, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 358045314}
+    - target: {fileID: 7768869703630192912, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadCurrentScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768869703788717517, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 358045314}
+    - target: {fileID: 7768869703788717517, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f,
         type: 3}
       propertyPath: pauseMenu
@@ -503,6 +523,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768869705336436721, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 358045314}
+    - target: {fileID: 7768869705336436721, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f, type: 3}
@@ -760,10 +790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2d97220b25ea24e8b1d0fb2bc795e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueButton: {fileID: 246531042}
-  restartButton: {fileID: 246531041}
-  exitButton: {fileID: 246531040}
-  pauseCanvasGroup: {fileID: 2140855640}
   pauseMenu: {fileID: 2140855638}
 --- !u!1 &517395423
 GameObject:
@@ -954,7 +980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4351277, y: 0.103722915, z: -10}
+  m_LocalPosition: {x: 0.22443724, y: 0.09644733, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25942,12 +25968,12 @@ PrefabInstance:
     - target: {fileID: 4258513475663015247, guid: ce0510d3dd8c0bb41b83166da94754b2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -308.38
+      value: -301
       objectReference: {fileID: 0}
     - target: {fileID: 4258513475663015247, guid: ce0510d3dd8c0bb41b83166da94754b2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171.74
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 4258513475663015247, guid: ce0510d3dd8c0bb41b83166da94754b2,
         type: 3}
@@ -31243,12 +31269,6 @@ MonoBehaviour:
 --- !u!1 &2140855638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7768869705216297759, guid: 1a56714200ba7cd4587dec69cafd168f,
-    type: 3}
-  m_PrefabInstance: {fileID: 246531038}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &2140855640 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 7768869705216297747, guid: 1a56714200ba7cd4587dec69cafd168f,
     type: 3}
   m_PrefabInstance: {fileID: 246531038}
   m_PrefabAsset: {fileID: 0}
