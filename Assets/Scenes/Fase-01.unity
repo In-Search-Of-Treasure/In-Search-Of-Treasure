@@ -240,6 +240,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f,
         type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 2140855638}
+    - target: {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
       propertyPath: exitButton
       value: 
       objectReference: {fileID: 246531040}
@@ -368,7 +373,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1a56714200ba7cd4587dec69cafd168f, type: 3}
 --- !u!224 &246531039 stripped
 RectTransform:
@@ -429,6 +435,7 @@ GameObject:
   - component: {fileID: 358045308}
   - component: {fileID: 358045312}
   - component: {fileID: 358045313}
+  - component: {fileID: 358045314}
   m_Layer: 0
   m_Name: Maksim
   m_TagString: Player
@@ -610,6 +617,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da15d283608421459bad0ab35ee67e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &358045314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358045304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2d97220b25ea24e8b1d0fb2bc795e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 246531042}
+  restartButton: {fileID: 246531041}
+  exitButton: {fileID: 246531040}
+  pauseCanvasGroup: {fileID: 2140855640}
+  pauseMenu: {fileID: 2140855638}
 --- !u!1 &517395423
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.19, y: -20.51, z: -10}
+  m_LocalPosition: {x: 1.9848323, y: 0.091630325, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -30954,6 +30978,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2140855638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7768869705216297759, guid: 1a56714200ba7cd4587dec69cafd168f,
+    type: 3}
+  m_PrefabInstance: {fileID: 246531038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &2140855640 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7768869705216297747, guid: 1a56714200ba7cd4587dec69cafd168f,
+    type: 3}
+  m_PrefabInstance: {fileID: 246531038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &279320764190832695
 PrefabInstance:
   m_ObjectHideFlags: 0

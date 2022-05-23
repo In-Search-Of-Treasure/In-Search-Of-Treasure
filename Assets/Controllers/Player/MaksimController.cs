@@ -26,8 +26,11 @@ public class MaksimController : Subject
 
         var hudController = FindObjectOfType<HudController>();
         var keyController = FindObjectOfType<KeyController>();
+        var pauseController = FindObjectOfType<PauseMenuController>();
+
         AddObserver(hudController);
         AddObserver(keyController);
+        AddObserver(pauseController);
 
         LifeManager.Instance.RestartLifeNumber();               
     }
@@ -129,12 +132,10 @@ public class MaksimController : Subject
 
     private void PlayerPause()
     {
-        /*if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameManager.Instance.PauseGame();
-            GameManager.Instance.GameWonDeactive();
-            SceneGameManager.Instance.LoadMainMenu();
-        }*/
+            Notify(NotificationType.PlayerPressedEsc);
+        }
     }
 
     private void PlayerOpenCloseInventory()

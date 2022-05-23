@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7768869705216297746}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
         m_MethodName: ReloadCurrentScene
         m_Mode: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7768869705216297746}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -596,7 +596,6 @@ GameObject:
   - component: {fileID: 7768869705216297744}
   - component: {fileID: 7768869705216297745}
   - component: {fileID: 7768869705216297747}
-  - component: {fileID: 7768869705216297746}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -672,23 +671,10 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7768869705216297759}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7768869705216297746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7768869705216297759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2d97220b25ea24e8b1d0fb2bc795e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseCanvasGroup: {fileID: 7768869705216297747}
 --- !u!1 &7768869705334259097
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +931,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7768869705216297746}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
