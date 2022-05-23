@@ -369,6 +369,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1429444683}
     m_Modifications:
+    - target: {fileID: 7768869703630192912, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 358045314}
+    - target: {fileID: 7768869703630192912, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadCurrentScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768869703788717517, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 358045314}
+    - target: {fileID: 7768869703788717517, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 2140855638}
     - target: {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f,
         type: 3}
       propertyPath: exitButton
@@ -499,7 +524,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7768869705336436721, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 358045314}
+    - target: {fileID: 7768869705336436721, guid: 1a56714200ba7cd4587dec69cafd168f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7768869705216297746, guid: 1a56714200ba7cd4587dec69cafd168f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1a56714200ba7cd4587dec69cafd168f, type: 3}
 --- !u!224 &246531039 stripped
 RectTransform:
@@ -560,6 +596,7 @@ GameObject:
   - component: {fileID: 358045308}
   - component: {fileID: 358045312}
   - component: {fileID: 358045313}
+  - component: {fileID: 358045314}
   m_Layer: 0
   m_Name: Maksim
   m_TagString: Player
@@ -741,6 +778,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da15d283608421459bad0ab35ee67e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &358045314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358045304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2d97220b25ea24e8b1d0fb2bc795e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 2140855638}
 --- !u!1 &517395423
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,7 +980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4351277, y: 0.103722915, z: -10}
+  m_LocalPosition: {x: 0.22443724, y: 0.09644733, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -25918,12 +25968,12 @@ PrefabInstance:
     - target: {fileID: 4258513475663015247, guid: ce0510d3dd8c0bb41b83166da94754b2,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -308.38
+      value: -301
       objectReference: {fileID: 0}
     - target: {fileID: 4258513475663015247, guid: ce0510d3dd8c0bb41b83166da94754b2,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171.74
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 4258513475663015247, guid: ce0510d3dd8c0bb41b83166da94754b2,
         type: 3}
@@ -31216,6 +31266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2140855638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7768869705216297759, guid: 1a56714200ba7cd4587dec69cafd168f,
+    type: 3}
+  m_PrefabInstance: {fileID: 246531038}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &279320764190832695
 PrefabInstance:
   m_ObjectHideFlags: 0

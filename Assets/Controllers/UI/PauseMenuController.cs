@@ -4,32 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseMenuController : MonoBehaviour
+public class PauseMenuController : Observer
 {
-    public Button continueButton;
-    public Button restartButton;
-    public Button exitButton;
+    public GameObject pauseMenu;
 
-    public CanvasGroup pauseCanvasGroup;
-    bool isPaused = false;
+    private bool isPaused;
 
     void Start()
     {
-        pauseCanvasGroup.alpha = 0;
         isPaused = false;
-        continueButton.enabled = false;
-        restartButton.enabled = false;
-        exitButton.enabled = false;
-
+        pauseMenu.SetActive(isPaused);
         Time.timeScale = 1;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
     }
 
     public void Pause()
@@ -39,27 +24,17 @@ public class PauseMenuController : MonoBehaviour
             return;
         }
 
-        if (!isPaused)
+        if (isPaused)
         {
-            continueButton.enabled = true;
-            restartButton.enabled = true;
-            exitButton.enabled = true;
-            pauseCanvasGroup.alpha = 1;
             isPaused = !isPaused;
-            Time.timeScale = 0;
+            pauseMenu.SetActive(isPaused);
+            Time.timeScale = 1;
         }
         else
         {
-            continueButton.enabled = false;
-            restartButton.enabled = false;
-            exitButton.enabled = false;
-
-            Debug.Log(restartButton.enabled);
-
-
-            pauseCanvasGroup.alpha = 0;
             isPaused = !isPaused;
-            Time.timeScale = 1;
+            pauseMenu.SetActive(isPaused);
+            Time.timeScale = 0;
         }
     }
 
@@ -73,5 +48,13 @@ public class PauseMenuController : MonoBehaviour
     {
         Debug.Log("Player quit the game.");
         SceneManager.LoadScene(SceneConstants.Menu);
+    }
+
+    public override void OnNotify(NotificationType notificationType, object value = null)
+    {
+        if (notificationType == NotificationType.PlayerPressedEsc)
+        {
+            Pause();
+        }
     }
 }

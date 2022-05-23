@@ -7,10 +7,6 @@ public class KeyController : Observer
 
     public override void OnNotify(NotificationType notificationType, object value = null)
     {
-        if (notificationType == NotificationType.PlayerPressedEsc)
-        {
-            EscPressed();
-        }
 
         if (notificationType == NotificationType.CutsceneSkipped)
         {
@@ -33,13 +29,6 @@ public class KeyController : Observer
 
             OpenCloseInventory(inventory);
         }
-    }
-
-    private void EscPressed()
-    {
-        GameManager.Instance.PauseGame();
-        GameManager.Instance.GameWonDeactive();
-        SceneGameManager.Instance.LoadMainMenu();
     }
 
     private void CutsceneSkipped()
