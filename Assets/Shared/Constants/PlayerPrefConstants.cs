@@ -9,7 +9,7 @@ public static class PlayerPrefConstants
     public static class SkillsRelated
     {
         public const string PlayerSpeed = "speed";
-        public const float PlayerDefaultSpeedValue = 700;
+        public const float PlayerDefaultSpeedValue = 2000;
         public const float PlayerIncreaseSpeedValue = 1000;
         public const float PlayerDecreaseSpeedValue = 500;
         public const string EnemySpeed = "enemySpeed";

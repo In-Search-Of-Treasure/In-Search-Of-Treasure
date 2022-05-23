@@ -169,7 +169,7 @@ public class MaksimController : Subject
 
     private float GetPlayerSpeed()
     {
-        var speed = PlayerPrefs.GetFloat(PlayerPrefConstants.SkillsRelated.PlayerSpeed, 700);
+        var speed = PlayerPrefs.GetFloat(PlayerPrefConstants.SkillsRelated.PlayerSpeed, PlayerPrefConstants.SkillsRelated.PlayerDefaultSpeedValue);
         return speed;
     }
 }
